@@ -39,4 +39,40 @@ public class SwimmingBookingSystem {
         students.add(new Student("Quintessence", "Female", 4, "210-987-6543", 0));
 
     }
+
+    private void generateTimetable() {
+        int lessonIdCounter = 1;
+        for (int week = 1; week <= 4; week++) {
+            // Monday
+            addLesson(lessonIdCounter++, "Monday", "4-5pm", week, getRandomGrade(), "Vidya");
+            addLesson(lessonIdCounter++, "Monday", "5-6pm", week, getRandomGrade(), "Ravi");
+            addLesson(lessonIdCounter++, "Monday", "6-7pm", week, getRandomGrade(), "Vidya");
+
+            // Wednesday
+            addLesson(lessonIdCounter++, "Wednesday", "4-5pm", week, getRandomGrade(), "Ravi");
+            addLesson(lessonIdCounter++, "Wednesday", "5-6pm", week, getRandomGrade(), "Vidya");
+            addLesson(lessonIdCounter++, "Wednesday", "6-7pm", week, getRandomGrade(), "Ravi");
+
+            // Friday
+            addLesson(lessonIdCounter++, "Friday", "4-5pm", week, getRandomGrade(), "Vidya");
+            addLesson(lessonIdCounter++, "Friday", "5-6pm", week, getRandomGrade(), "Ravi");
+            addLesson(lessonIdCounter++, "Friday", "6-7pm", week, getRandomGrade(), "Vidya");
+
+            // Saturday
+            addLesson(lessonIdCounter++, "Saturday", "2-3pm", week, getRandomGrade(), "Vidya");
+            addLesson(lessonIdCounter++, "Saturday", "3-4pm", week, getRandomGrade(), "Ravi");
+
+        }
+    }
+
+    private int getRandomGrade() {
+        // Simulate generating a random grade
+        return (int) (Math.random() * 5) + 1;
+    }
+
+    public void addLesson(int lessonId, String day, String timeSlot, int week, int gradeLevel, String instructorName) {
+        SwimLesson lesson = new SwimLesson(lessonId, day, timeSlot, week, gradeLevel, instructorName);
+        swimLessons.add(lesson);
+    }
+
 }
